@@ -83,6 +83,30 @@ module.exports = function (grunt) {
                 ]
             }
         },
+        processTags: {
+            options: {
+                processors: {
+                    jsFun: function (content) {
+//                        console.log('jscontent:'+content);
+                        return "../../js/app/all.js";
+                    },
+                    cssFun: function (content) {
+//                        console.log('csscontent:'+content);
+                        return "../../css/all.css";
+                    }
+                },
+                app : {
+                    files: [
+                        {expand: true, src: ['html/**/*.html'], dest: '../dist/'}
+                    ]
+                }
+            },
+            app : {
+                files: [
+                    {expand: true, src: ['html/**/*.html'], dest: '../dist/'}
+                ]
+            }
+        },
         uglify : {
             app : {
                 files: [
@@ -109,6 +133,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-processhtml');
+    grunt.loadNpmTasks('grunt-process-tags');
     
     grunt.registerMultiTask('htmlprocess', 'My asynchronous task.', function() {
         grunt.log.writeln('htmlprocess started');
