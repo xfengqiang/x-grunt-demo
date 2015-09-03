@@ -73,16 +73,6 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        processhtml: {
-            options: {
-                process: true
-            },
-            app : {
-                files: [
-                    {expand: true, src: ['html/**/*.html'], dest: '../dist/'}
-                ]
-            }
-        },
         processTags: {
             options: {
                 processors: {
@@ -161,6 +151,6 @@ module.exports = function (grunt) {
     });
     
 //    grunt.registerTask('build-styles', ['transport:styles', 'concat:styles', 'uglify:styles', 'clean']);
-    grunt.registerTask('default', ['transport:app', 'concat:app', 'copy:app', 'uglify:app', 'cssmin:app', 'processhtml:app', 'clean']);
+    grunt.registerTask('default', ['transport:app', 'concat:app', 'copy:app', 'uglify:app', 'cssmin:app', 'processTags:app', 'clean']);
 //    grunt.registerTask('default', ['clean']);
 };
