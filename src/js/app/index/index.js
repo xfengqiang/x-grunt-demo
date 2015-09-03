@@ -1,4 +1,4 @@
-var define2 = define(function (require, exports) {
+define(function (require, exports) {
     var $ = require("jquery"),
         Dialog = require("dialog");
     $("#btnDialog").bind("click", function () {

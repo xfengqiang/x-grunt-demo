@@ -2,14 +2,10 @@
  * Created by Administrator on 15-9-2.
  */
 define(function (require, exports) {
-    var $ = require("jquery");
-    
-    var data = {
-        title: '基本例子',
-        isAdmin: true,
-        list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
-    };
-    var html = template('test', data);
-    $('#content').html(html);
-//    document.getElementById('content').innerHTML = html;
+    var $ = require("jquery"),
+        Dialog = require("dialog");
+    $("#btnDialog").bind("click", function () {
+        var mapDialog = new Dialog({type: "text", value: 'this is topic page', width:'230px', height:'60px'});
+        mapDialog.show();
+    })
 });

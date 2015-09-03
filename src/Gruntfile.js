@@ -50,7 +50,6 @@ module.exports = function (grunt) {
             app : {
                 files: [
                     {expand: true, src: ['js/lib/seajs/**'], dest: '../dist/'},
-                    {expand: true, src: ['html/**', 'css/**'], dest: '../dist/'}
                 ]
             }
         },
@@ -66,30 +65,9 @@ module.exports = function (grunt) {
                 }
             }
         },
-        htmlprocess : {
-            app : {
-                files: [
-                    {expand: true, src: ['html/**'], dest: '../dist/'}
-                ]
-            }
-        },
-        processTags: {
+        processhtml: {
             options: {
-                processors: {
-                    jsFun: function (content) {
-//                        console.log('jscontent:'+content);
-                        return "../../js/app/all.js";
-                    },
-                    cssFun: function (content) {
-//                        console.log('csscontent:'+content);
-                        return "../../css/all.css";
-                    }
-                },
-                app : {
-                    files: [
-                        {expand: true, src: ['html/**/*.html'], dest: '../dist/'}
-                    ]
-                }
+                process: true
             },
             app : {
                 files: [
@@ -122,7 +100,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-processhtml');
+    grunt.loadNpmTasks('grunt-processhtml-prepend');
+    
     grunt.loadNpmTasks('grunt-process-tags');
     
     grunt.registerMultiTask('htmlprocess', 'My asynchronous task.', function() {
@@ -151,6 +130,6 @@ module.exports = function (grunt) {
     });
     
 //    grunt.registerTask('build-styles', ['transport:styles', 'concat:styles', 'uglify:styles', 'clean']);
-    grunt.registerTask('default', ['transport:app', 'concat:app', 'copy:app', 'uglify:app', 'cssmin:app', 'processTags:app', 'clean']);
+    grunt.registerTask('default', ['transport:app', 'concat:app', 'copy:app', 'uglify:app', 'cssmin:app', 'processhtml:app', 'clean']);
 //    grunt.registerTask('default', ['clean']);
 };
